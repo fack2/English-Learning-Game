@@ -24,3 +24,5 @@ const data = [
         image: "https://images-na.ssl-images-amazon.com/images/I/71IXI3kBGEL._SY355_.jpg"
     }
 ]
+
+export default data;

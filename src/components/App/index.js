@@ -1,7 +1,15 @@
 import React from 'react';
+import Game from '../Game'
 
-const App = () => (
-  <p>Helloo </p>
-);
+const App = () =>{
+  return (
+      <div>
+     
+      <Game />
+      </div>
+  )
+  
+  
+}; 
 
 export default App;
