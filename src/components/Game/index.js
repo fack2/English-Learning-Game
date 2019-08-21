@@ -1,22 +1,60 @@
-import React, {Component} from "./node_modules/react"; 
+import React, {Component} from "react"; 
 import vocabularies from "../../data"
+import Card from '../Card'
+import {randomPicker} from '../../utils/randomPicker'
+import './index.css'
 
-class game extends Component{
+class Game extends Component{
     state = {
         name: "Cherry", 
-        score: 0
+        score: 0,
+     image:'https://www.khodarji.com/riyadh/ar/media/catalog/product/cache/4/thumbnail/9df78eab33525d08d6e5fb8d27136e95/c/h/cherry-01.jpg'
     };
 
-    const vocabulariesItems = vocabularies.map(vocabulary =>{
-      
-        <h3>{vocabulary.name}</h3>
-    })
-    render(){
+
+    change = (vocabularies) => {
         
-        return(
-            <div><p>working</p></div>
-        )
+        const randomItem = randomPicker(vocabularies)
+       
+        this.setState({name: randomItem.name})
+        // this.setState({image: randomItem.image})
+        }
+        
+    
+
+
+    score = ()=> {
+       this.setState((prevState)=>{
+           return {score: prevState.score+3 }})
     }
+
+    onClickButton(event) {
+        this.change(vocabularies) ;
+        this.score();
+     }
+
+    render(){
+    return(
+        <div>
+
+        <h2>{this.state.name}</h2>
+        <h2>score {this.state.score}</h2>
+     
+
+
+        
+        { this.vocabulariesMap = vocabularies.map(({ vocabularyName, image}) => 
+            <button class= "imageButton" onClick={() => {
+            console.log(vocabularyName);
+            console.log(this.state.name)
+            // {return  (this.onClickButton)  }
+            }}>
+            <a href="#" onClick={(event) => { this.change(vocabularies); this.score();}}><Card class="images" image={image}/></a>
+            </button> )}
+       
+
+        </div>
+        ) }
 }
 
-export default game; 
+export default Game ; 
