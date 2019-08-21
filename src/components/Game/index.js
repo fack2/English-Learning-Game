@@ -12,11 +12,11 @@ class Game extends Component {
     score: 0
   };
 
-  changeWord(vocabularies, name) {
+  changeWord(vocabularies, userAnswer) {
     const randomItem = randomPicker(vocabularies);
     this.setState({ name: randomItem.name });
     this.setState(prevState => {
-      if (this.state.name == name) {
+      if (this.state.name == userAnswer) {
         return { score: prevState.score + 3, name: randomItem.name };
       }
     });
