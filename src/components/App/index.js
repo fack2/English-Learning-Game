@@ -1,7 +1,4 @@
 import React from 'react';
+import Game from '../Game'
 
-const App = () => (
-  <p>Helloo </p>
-);
-
-export default App;
+export const App = () => <Game />
