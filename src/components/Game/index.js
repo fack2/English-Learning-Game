@@ -14,10 +14,8 @@ class Game extends Component {
 
   changeWord(vocabularies, name) {
     const randomItem = randomPicker(vocabularies);
-
     this.setState({ name: randomItem.name });
     this.setState(prevState => {
-      console.log(name);
       if (this.state.name == name) {
         return { score: prevState.score + 3, name: randomItem.name };
       }
