@@ -1,0 +1,11 @@
+.images img {
+  height: 200px;
+}
+
+.correct {
+  border: 15px solid green;
+}
+
+.wrong {
+  border: 15px solid red;
+}
