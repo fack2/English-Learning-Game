@@ -7,17 +7,14 @@ import "./index.css";
 class Game extends Component {
   state = {
     name: "Cherry",
-    score: 0,
-    image:
-      "https://www.khodarji.com/riyadh/ar/media/catalog/product/cache/4/thumbnail/9df78eab33525d08d6e5fb8d27136e95/c/h/cherry-01.jpg"
+    image: "https://www.khodarji.com/riyadh/ar/media/catalog/product/cache/4/thumbnail/9df78eab33525d08d6e5fb8d27136e95/c/h/cherry-01.jpg",
+    score: 0
   };
 
   changeWord(vocabularies) {
     const randomItem = randomPicker(vocabularies);
-    this.setState({ name: randomItem.name });
-
     this.setState(prevState => {
-      return { score: prevState.score + 3 };
+      return { score: prevState.score + 3, name: randomItem.name };
     });
   }
 
@@ -29,7 +26,7 @@ class Game extends Component {
 
         {
           (this.vocabulariesMap = vocabularies.map(
-            ({ vocabularyName, image }) => (
+            ({ name , image }) => (
               <button class="imageButton">
                 <a
                   href="#"
@@ -37,7 +34,7 @@ class Game extends Component {
                     this.changeWord(vocabularies);
                   }}
                 >
-                  <Card class="images" image={image} />
+                  <Card class="images" image={image} name={name} />
                 </a>
               </button>
             )
