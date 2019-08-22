@@ -2,44 +2,81 @@ import React, { Component } from "react";
 import vocabularies from "../../data";
 import Card from "../Card";
 import { randomPicker } from "../../utils/randomPicker";
-import "./index.css";
 
 class Game extends Component {
   state = {
-    name: "Cherry",
-    image: "https://www.khodarji.com/riyadh/ar/media/catalog/product/cache/4/thumbnail/9df78eab33525d08d6e5fb8d27136e95/c/h/cherry-01.jpg",
-    score: 0
+    word: "Cherry",
+    answer: "",
+    score: 0,
+    isCorrect: false,
+    id: null,
+ 
   };
 
-  changeWord(vocabularies) {
+  changeWord = () => {
     const randomItem = randomPicker(vocabularies);
+    this.setState({ name: randomItem.name });
     this.setState(prevState => {
-      return { score: prevState.score + 3, name: randomItem.name };
+      return {
+        word: randomItem.name
+      };
     });
+  };
+  setAnswer = (name, id) => {
+    this.setState({ answer: name, id, clicked: true }, () =>
+      this.checkCorrectCard()
+    );
+  };
+
+  checkCorrectCard = () => {
+    const { word, answer } = this.state;
+    if (word === answer) {
+      this.setState(prevState => ({
+        isCorrect: true,
+        score: prevState.score + 3
+      }));
+      this.changeWord()
+    }
+    else{
+      this.setState({isCorrect: false})
+
+    }
+      
+  };
+
+  clearAnswer= (name, id)=>{
+    this.setState({ answer: name, id, clicked: false }, () =>
+      this.checkCorrectCard()
+    ); 
   }
 
   render() {
+    const { word, score, id, clicked, isCorrect,count } = this.state;
+
+
+  
+
     return (
       <div>
-        <h2>{this.state.name}</h2>
-        <h2>score {this.state.score}</h2>
-
-        {
-          (this.vocabulariesMap = vocabularies.map(
-            ({ name , image }) => (
-              <button class="imageButton">
-                <a
-                  href="#"
-                  onClick={() => {
-                    this.changeWord(vocabularies);
-                  }}
-                >
-                  <Card class="images" image={image} name={name} />
-                </a>
-              </button>
-            )
-          ))
-        }
+        <h2>{word}</h2>
+        <h2>score: {score}</h2>
+        {vocabularies.map(({ name, image }, i) => (
+          <Card
+            className={
+              i === id
+                ? isCorrect
+                  ? "images correct"
+                  : "images wrong"
+                : "images"
+            }
+            key={name}
+            image={image}
+            name={name}
+            index={i}
+         
+            setAnswer={clicked ?  this.clearAnswer : this.setAnswer }          />
+        ))}
+        {isCorrect && <p>This is correct! YAYYYYYYYYYYYYY</p>}
       </div>
     );
   }
