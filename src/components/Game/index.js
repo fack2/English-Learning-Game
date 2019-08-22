@@ -10,8 +10,7 @@ class Game extends Component {
     score: 0,
     isCorrect: false,
     id: null,
-    clicked: false,
-    // count: 15
+ 
   };
 
   changeWord = () => {
@@ -45,20 +44,6 @@ class Game extends Component {
       
   };
 
-  // componentDidMount(){
-  //   this.myInterval = setInterval(() => {
-
-    
-  //   this.setState( prevState => ({
-  //     count: prevState.count - 1  
-  //   }))
-  // }, 1000)
-  // }
-
-  // componentWillUnmount(){
-  //   clearInterval(this.myInterval)
-  // }
-
   clearAnswer= (name, id)=>{
     this.setState({ answer: name, id, clicked: false }, () =>
       this.checkCorrectCard()
@@ -73,7 +58,6 @@ class Game extends Component {
 
     return (
       <div>
-      <h1>current count: {count}</h1>
         <h2>{word}</h2>
         <h2>score: {score}</h2>
         {vocabularies.map(({ name, image }, i) => (
