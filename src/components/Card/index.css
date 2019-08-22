@@ -13,12 +13,12 @@
 
 
 }
-.flex-container {
+.flexcontainer {
   display: flex;
   justify-content: center;
 }
 
-.flex-container img {
+.flexcontainer img {
   height: 100px;
   padding: 25px ;
 }

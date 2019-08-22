@@ -53,7 +53,7 @@ class Game extends Component {
       <div>
         <h2>{word}</h2>
         <h2>score: {score}</h2>
-        <div className="flex-container">
+        <div className="flexcontainer">
           {vocabularies.map(({ name, image }, i) => (
             <Card
               className={
