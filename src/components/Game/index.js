@@ -10,10 +10,11 @@ class Game extends Component {
     score: 0,
     isCorrect: false,
     id: null,
-    clicked: false
+    clicked: false,
+    // count: 15
   };
 
-  changeWord = vocabularies => {
+  changeWord = () => {
     const randomItem = randomPicker(vocabularies);
     this.setState({ name: randomItem.name });
     this.setState(prevState => {
@@ -35,13 +36,44 @@ class Game extends Component {
         isCorrect: true,
         score: prevState.score + 3
       }));
+      this.changeWord()
     }
+    else{
+      this.setState({isCorrect: false})
+
+    }
+      
   };
 
+  // componentDidMount(){
+  //   this.myInterval = setInterval(() => {
+
+    
+  //   this.setState( prevState => ({
+  //     count: prevState.count - 1  
+  //   }))
+  // }, 1000)
+  // }
+
+  // componentWillUnmount(){
+  //   clearInterval(this.myInterval)
+  // }
+
+  clearAnswer= (name, id)=>{
+    this.setState({ answer: name, id, clicked: false }, () =>
+      this.checkCorrectCard()
+    ); 
+  }
+
   render() {
-    const { word, score, id, clicked, isCorrect } = this.state;
+    const { word, score, id, clicked, isCorrect,count } = this.state;
+
+
+  
+
     return (
       <div>
+      <h1>current count: {count}</h1>
         <h2>{word}</h2>
         <h2>score: {score}</h2>
         {vocabularies.map(({ name, image }, i) => (
@@ -57,8 +89,8 @@ class Game extends Component {
             image={image}
             name={name}
             index={i}
-            setAnswer={clicked ? () => {} : this.setAnswer}
-          />
+         
+            setAnswer={clicked ?  this.clearAnswer : this.setAnswer }          />
         ))}
         {isCorrect && <p>This is correct! YAYYYYYYYYYYYYY</p>}
       </div>
