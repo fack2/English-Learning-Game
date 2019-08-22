@@ -5,7 +5,7 @@ const FirstPage = ({startGame})=>{
         <div>
         <h1>English Learning Game</h1>
         <button onClick={() => startGame()
-        }>start</button>
+        }>Start</button>
         </div>
     )
 }

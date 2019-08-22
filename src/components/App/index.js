@@ -5,6 +5,7 @@ class App extends Component  {
 
     state = {
         gameStarted : false
+        
       };
 
        startGame = ( ) => {
