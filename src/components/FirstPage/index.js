@@ -1,10 +1,13 @@
-import React, {component} from 'react'
-const FirstPage = ()=>{
+import React from 'react'
+const FirstPage = ({startGame})=>{
+
     return(
         <div>
         <h1>English Learning Game</h1>
-        <button>start</button>
+        <button onClick={() => startGame()
+        }>Start</button>
         </div>
     )
 }
+
 export default FirstPage
