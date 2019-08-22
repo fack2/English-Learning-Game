@@ -1,18 +1,15 @@
 .correct {
   border: 2px solid green;
   width: 200px;
-  padding: 25px ;
-
-
+  padding: 25px;
 }
 
 .wrong {
   border: 2px solid red;
   width: 150px;
-  padding: 25px ;
-
-
+  padding: 25px;
 }
+
 .flexcontainer {
   display: flex;
   justify-content: center;
@@ -20,9 +17,9 @@
 
 .flexcontainer img {
   height: 100px;
-  padding: 25px ;
+  padding: 25px;
 }
+
 h2 {
   text-align: center;
-
 }
