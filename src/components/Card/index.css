@@ -1,11 +1,28 @@
-.images img {
-  height: 200px;
-}
-
 .correct {
-  border: 15px solid green;
+  border: 2px solid green;
+  width: 200px;
+  padding: 25px ;
+
+
 }
 
 .wrong {
-  border: 15px solid red;
+  border: 2px solid red;
+  width: 150px;
+  padding: 25px ;
+
+
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-container img {
+  height: 100px;
+  padding: 25px ;
+}
+h2 {
+  text-align: center;
+
 }

@@ -9,8 +9,7 @@ class Game extends Component {
     answer: "",
     score: 0,
     isCorrect: false,
-    id: null,
- 
+    id: null
   };
 
   changeWord = () => {
@@ -35,47 +34,43 @@ class Game extends Component {
         isCorrect: true,
         score: prevState.score + 3
       }));
-      this.changeWord()
+      this.changeWord();
+    } else {
+      this.setState({ isCorrect: false });
     }
-    else{
-      this.setState({isCorrect: false})
-
-    }
-      
   };
 
-  clearAnswer= (name, id)=>{
+  clearAnswer = (name, id) => {
     this.setState({ answer: name, id, clicked: false }, () =>
       this.checkCorrectCard()
-    ); 
-  }
+    );
+  };
 
   render() {
-    const { word, score, id, clicked, isCorrect,count } = this.state;
-
-
-  
+    const { word, score, id, clicked, isCorrect, count } = this.state;
 
     return (
       <div>
         <h2>{word}</h2>
         <h2>score: {score}</h2>
-        {vocabularies.map(({ name, image }, i) => (
-          <Card
-            className={
-              i === id
-                ? isCorrect
-                  ? "images correct"
-                  : "images wrong"
-                : "images"
-            }
-            key={name}
-            image={image}
-            name={name}
-            index={i}
-         
-            setAnswer={clicked ?  this.clearAnswer : this.setAnswer }          />
-        ))}
+        <div className="flex-container">
+          {vocabularies.map(({ name, image }, i) => (
+            <Card
+              className={
+                i === id
+                  ? isCorrect
+                    ? "images correct"
+                    : "images wrong"
+                  : "images"
+              }
+              key={name}
+              image={image}
+              name={name}
+              index={i}
+              setAnswer={clicked ? this.clearAnswer : this.setAnswer}
+            />
+          ))}
+        </div>
         {isCorrect && <p>This is correct! YAYYYYYYYYYYYYY</p>}
       </div>
     );
